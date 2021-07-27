@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IceGeoService</title>
+
+    <!--bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <!--leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+   crossorigin=""/>
+
+   <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+   crossorigin=""></script>
+
+   <script src="js/leaflet.ajax.min.js"></script>
+   <script src="data/data_1.js"></script>
+   <script src="data/data_2.js"></script>
+   <script src="data/ships_data.js"></script>
+
+   <!-- measure -->
+   <link rel="stylesheet" href="leaflet.measure/leaflet.measure.css">
+   <script src="leaflet.measure/leaflet.measure.js"></script>
+
+   <!--project's files -->
+   <link rel="stylesheet" href="style/style.css">
+   <link rel="stylesheet" href="style/ui_map_style.css">
+   <link rel="stylesheet" href="style/timeline.css">
+   <script src="js/main.js"></script>
+
+   <script src="Flexberry-Leaflet-WFST/dist/leaflet-wfst.src.js"></script>
+
+    <!-- map scripts leaflet -->
+    <script src="js/map-main.js"></script>
+
+
+</head>
+
+<body>
+   
+    <!-- HEADER -->
+    <header>
+
+        <div id="sidebarCollapse" class="menu-btn d-flex justify-content-center align-items-center" style="position: absolute; top: 0px; left:20px;z-index: 1000;">
+            <img src="images/menu-white.svg" width="25" height="25"/>
+        </div>
+
+
+        <div class="shadow navbar navbar-dark bg-dark shadow-sm justify-content-center align-self-center p-0">
+           
+            <div class="container d-flex justify-content-center align-self-center">
+                <a href="#">
+                    <img src="https://img.icons8.com/color/96/000000/iceberg.png" width="50" height="50" class="align-self-center justify-content-center"/>
+                </a>
+                <a class="h1 navbar-brand d-flex align-items-center p-0 m-0">IceGeoService</a>
+            </div>
+            
+        </div>
+    </header>
+
+
+    <!-- MAP -->
+    <div id="mapid" class="container-fluid"> </div>
+
+
+    <!-- SIDEBAR MENU -->
+    <div class="wrapper" style="position: absolute;">
+    
+        <nav id="sidebar" >
+            <div class="sidebar-header justify-content-center align-items-center pb-0">
+                <h3 class="text-justify text-center mb-0">Features</h3>
+            </div>
+            
+            <ul class="components">
+                <hr class="mt-0">
+                <li>
+
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Ледяной покров</a>
+                    <ul class="collapse list-unstyled list-menu" id="homeSubmenu">
+
+                        
+                        <!-- <li>
+                            <a href="#">
+                                <div class="d-flex d-fill align-items-center">
+                                    <i style="background-color: #3BFF00;" class="sidebar-i"></i>
+                                    <span class="sidebar-span">Thin ice</span>
+                                    
+                                    <img src="images/uncheck.png" width="24" height="24" alt="thin_ice" class="float-right eye_ico">
+                                </div>
+                            </a>            
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="d-flex d-fill align-items-center">
+                                    <i style="background-color: #BDC3FF;" class="sidebar-i"></i>
+                                    <span class="sidebar-span">Fixed one year middle ice</span>
+                                    <img src="images/uncheck.png" width="24" height="24" alt="one_year_middle" class="float-right eye_ico" >
+                                </div>
+                            </a>    
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="d-flex d-fill align-items-center">
+                                    <i style="background-color: #ff6666;" class="sidebar-i"></i>
+                                    <span class="sidebar-span">Grey ice</span>
+                                    <img src="images/uncheck.png" width="24" height="24" alt="grey_ice" class="float-right eye_ico">
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="d-flex d-fill align-items-center">
+                                    <i style="background-color: #9381FF;" class="sidebar-i"></i>
+                                    <span class="sidebar-span">White ice</span>
+                                    <img src="images/uncheck.png" width="24" height="24" alt="white_ice" class="float-right eye_ico">
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="d-flex d-fill align-items-center">
+                                    <i style="background-color: #66ffd9;" class="sidebar-i"></i>
+                                    <span class="sidebar-span">Drifting One year middle ice</span>
+                                    <img src="images/uncheck.png" width="24" height="24" alt="d_one_year_middle" class="float-right eye_ico">
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="d-flex d-fill align-items-center">
+                                    <i style="background-color: #66b3ff;" class="sidebar-i"></i>
+                                    <span class="sidebar-span">Nilas</span>
+                                    <img src="images/uncheck.png" width="24" height="24" alt="nilas" class="float-right eye_ico">
+                                </div>
+                            </a>
+                        </li>
+                         -->
+                    </ul>
+                </li>
+                <hr>
+                <li>
+                    <a href="#">Температура воды °С</a>
+                </li>
+                <hr>
+                <li>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Корабли</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li>
+                            <a href="#">Page 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 3</a>
+                        </li>
+                    </ul>
+                </li>
+                <hr>
+                <li>
+                    <a href="#">Portfolio</a>
+                </li>
+                <hr>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+                <hr>
+                <li>
+                    <a href="#timeLine" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Timeline</a>
+                    <ul class="collapse list-unstyled" id="timeLine">
+                        <li>
+                            <div class="d-flex row m-0 justify-content-center" style="padding-top:10px; padding-bottom: 10px; height: 100%; width: 100%;">
+                            
+                                    <div class="col-4 text-center">
+                                        <label class="date">21.01.2020</label><br>
+                                        <input type="radio" name="layerDate" value="21.01.2020" checked>
+                                    </div>
+                                    <div class="col-4 text-center">
+                                        <label class="date">21.02.2020</label><br>
+                                        <input type="radio" name="layerDate" value="21.02.2020" >
+                                    </div>
+                                    <!-- <div class="col-4 text-center">
+                                        <label class="date">21.03.2020</label><br>
+                                        <input type="radio" name="layerDate" value="21.03.2020">
+                                    </div> -->
+                                   
+                            </div>
+                        </li>
+                        
+                    </ul>
+                </li>
+                <hr>
+                <li>
+                    <a href="#mapsSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Maps</a>
+                    <ul class="collapse list-unstyled" id="mapsSubmenu">
+                        <li>
+                            <label class="mapLayer" for="positronLayer">Positron map</label>
+                            <input type="radio" id="positronLayer" name="mapLayerType" value="positron" checked>
+                        </li>
+                        <li>
+                            <label class="mapLayer" for="hybridLayer">Satellite Hybrid</label>
+                            <input type="radio" id="hybridLayer" name="mapLayerType" value="hybrid">
+                        </li>
+                    </ul>
+                </li>
+                <hr>
+                <hr>
+                <li>
+                    <label for="legend-check" style="padding:10px; margin: 0px;">Hide legend</label>
+                    <input type="checkbox" id="legend-check" name="legend" value="legend" style="margin-left:145px;">
+                </li>
+                <hr>
+                
+
+
+            </ul>
+            <p  style=" color:white; margin: 10px;">&copy; Anastasia Volkova & Emin Bariev</p>
+        </nav>
+        
+
+    </div>
+
+</body>
+</html>

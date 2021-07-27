@@ -1,0 +1,46 @@
+.info {
+    padding: 6px 8px;
+    font: 16px/18px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(52, 58, 64);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    opacity: 0.8;
+    
+}
+.info h4 {
+    margin: 0 px;
+    color: rgb(212, 211, 211);
+}
+
+.legend {
+    line-height: 18px;
+    color: rgb(255, 255, 255);
+    opacity: 0.8;
+    
+}
+.legend i {
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin-right: 8px;
+    
+}
+
+b {
+    color: rgb(212, 211, 211);
+}
+
+.property{
+    color: rgb(212, 211, 211);
+}
+
+
+.mapLayer{
+    width: 84%;
+    padding: 10px;
+}
+
+span b {
+    color: black;
+}
